@@ -20,8 +20,6 @@ const Header = () => {
         saveUserInfo();
     }, [session])
 
-    console.log(session)
-
     const saveUserInfo = async () => {
         if (session?.user) {
             // @ts-ignore
@@ -35,7 +33,7 @@ const Header = () => {
 
     const onCreateClick = () => {
         if (session) {
-            router.push('/pin-builder')
+            router.push('/pin-form')
         }
         else {
             signIn()
@@ -44,7 +42,7 @@ const Header = () => {
 
     return (
         <div className='flex justify-between gap-3 md:gap-2 items-center p-6'>
-            <Image src="/pinterst-logo.png" alt='Logo' width={50} height={50} className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' />
+            <Image onClick={() => router.push('/')} src="/pinterst-logo.png" alt='Logo' width={50} height={50} className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' />
             <button onClick={() => router.push('/')} className='bg-black text-white p-3 px-6 rounded-full text-[25px] hidden md:block'>Home</button>
             <button onClick={() => onCreateClick()} className='font-semibold p-3 px-6 rounded-full text-[25px]'>Create</button>
             <div className='bg-[#e9e9e9] p-3 px-6 gap-3 items-center rounded-full w-full hidden md:flex'>
